@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project/Desktop/desktop_onboarding.dart';
 import 'package:my_project/Desktop/small_desktop_onboarding.dart';
-import 'package:my_project/Mobile_Screen/mobile_onboarding.dart'; // Import SmallDesktopOnboarding
+import 'package:my_project/Mobile_Screen/mobile_onboarding.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,9 +22,7 @@ void main() async {
     await Firebase.initializeApp();
   }
   runApp(const MyApp());
-  // } catch (e) {
-  //   print("Error initializing Firebase: $e");
-  // }
+
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MyHomePage(), // Gọi MyHomePage để kiểm tra kích thước màn hình
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -46,13 +44,12 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    // Kiểm tra kích thước màn hình và chuyển đến giao diện tương ứng
     if (screenWidth > 760) {
-      return const DesktopOnboarding(); // Giao diện Desktop lớn
+      return const DesktopOnboarding();
     } else if (screenWidth > 500) {
-      return const SmallDesktopOnboarding(); // Giao diện Desktop nhỏ
+      return const SmallDesktopOnboarding();
     } else {
-      return const MobileOnboarding(); // Giao diện Mobile
+      return const MobileOnboarding();
     }
   }
 }
