@@ -6,7 +6,7 @@ final ButtonStyle customElevatedButtonStyle = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(50),
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
     fontSize: 16.0,
     fontWeight: FontWeight.bold,
@@ -19,7 +19,7 @@ final ButtonStyle customEmailButtonStyle = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(50),
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
     fontSize: 16.0,
     fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ final ButtonStyle customGoogleButtonStyle = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(50),
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
     fontSize: 16.0,
     fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ final ButtonStyle customFacebookButtonStyle = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(50),
   ),
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
     fontSize: 16.0,
     fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ final ButtonStyle customFacebookButtonStyle = ElevatedButton.styleFrom(
 final InputDecoration customTextFieldDecoration = InputDecoration(
   filled: true,
   fillColor: const Color(0xFFD9D9D9),
-  hintStyle: TextStyle(
+  hintStyle: const TextStyle(
     color: Colors.grey,
     fontSize: 16.0,
     fontWeight: FontWeight.bold,

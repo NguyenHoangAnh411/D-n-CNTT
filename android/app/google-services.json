@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "79853946102",
+    "project_id": "finalsoa-fae05",
+    "storage_bucket": "finalsoa-fae05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79853946102:android:a251659a964e573a43d8d7",
+        "android_client_info": {
+          "package_name": "com.example.my_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuArho0rqQqLCRM2bO7CeEIBJXPEY8_X0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

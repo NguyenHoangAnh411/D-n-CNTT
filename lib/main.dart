@@ -1,25 +1,26 @@
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project/Desktop/desktop_onboarding.dart';
 import 'package:my_project/Desktop/small_desktop_onboarding.dart';
 import 'package:my_project/Mobile_Screen/mobile_onboarding.dart'; // Import SmallDesktopOnboarding
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // try {
-  //   if (kIsWeb) {
-  //     await Firebase.initializeApp(
-  //         options: FirebaseOptions(
-  //             apiKey: "AIzaSyBCGV28ZlqS0HNXJyKiGMVKP1xPs16UZPc",
-  //             authDomain: "studyenglishapp-2593d.firebaseapp.com",
-  //             projectId: "studyenglishapp-2593d",
-  //             storageBucket: "studyenglishapp-2593d.firebasestorage.app",
-  //             messagingSenderId: "493684934172",
-  //             appId: "1:493684934172:web:990397a84add0995a501d9",
-  //             measurementId: "G-5VXPWREWL0"));
-  //   } else {
-  //     await Firebase.initializeApp();
-  //   }
+  WidgetsFlutterBinding.ensureInitialized();
+  if(kIsWeb) {
+      await Firebase.initializeApp(options: const FirebaseOptions(
+        apiKey: "AIzaSyAfVbWWeKM7gO4Wb3hsHP12RXnsGjNJJq8",
+        authDomain: "finalsoa-fae05.firebaseapp.com",
+        projectId: "finalsoa-fae05",
+        storageBucket: "finalsoa-fae05.appspot.com",
+        messagingSenderId: "79853946102",
+        appId: "1:79853946102:web:f7ce38cd4a766bca43d8d7",
+        measurementId: "G-5QF5YT3B3R"
+      ));
+  } else {
+    await Firebase.initializeApp();
+  }
   runApp(const MyApp());
   // } catch (e) {
   //   print("Error initializing Firebase: $e");

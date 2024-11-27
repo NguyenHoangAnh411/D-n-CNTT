@@ -13,7 +13,7 @@ void emailLoginScreen(BuildContext context) {
       ),
     ),
     builder: (BuildContext context) {
-      return Container(
+      return SizedBox(
         height: MediaQuery.of(context).size.height * 0.9,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -21,7 +21,7 @@ void emailLoginScreen(BuildContext context) {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 'Đăng nhập bằng email',
                 style: TextStyle(
                   fontSize: 25,
@@ -60,7 +60,7 @@ void emailLoginScreen(BuildContext context) {
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Quên mật khẩu?',
                   style: TextStyle(
                       fontSize: 16,

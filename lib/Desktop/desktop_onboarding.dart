@@ -29,7 +29,7 @@ class DesktopOnboarding extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.8,
                     width: MediaQuery.of(context).size.width * 0.45,
                     decoration: BoxDecoration(
-                      color: Color(0XFFdfeff3),
+                      color: const Color(0XFFdfeff3),
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
@@ -41,7 +41,7 @@ class DesktopOnboarding extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(50.0),
+                      padding: const EdgeInsets.all(50.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,12 +55,13 @@ class DesktopOnboarding extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.40,
                             height: 40,
                             child: ElevatedButton(
                               onPressed: () {},
+                              style: customElevatedButtonStyle,
                               child: const Text(
                                 'Tiếp tục bằng số điện thoại',
                                 style: TextStyle(
@@ -69,10 +70,9 @@ class DesktopOnboarding extends StatelessWidget {
                                   color: Color(0xFFFFFFFF),
                                 ),
                               ),
-                              style: customElevatedButtonStyle,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Row(
@@ -84,13 +84,13 @@ class DesktopOnboarding extends StatelessWidget {
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.6,
-                                        child: Divider(color: Colors.grey))
+                                        child: const Divider(color: Colors.grey))
                                   ],
                                 ),
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           SizedBox(
@@ -111,7 +111,7 @@ class DesktopOnboarding extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           SizedBox(
@@ -132,7 +132,7 @@ class DesktopOnboarding extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           SizedBox(
@@ -153,7 +153,7 @@ class DesktopOnboarding extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           SizedBox(

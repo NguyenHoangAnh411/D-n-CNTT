@@ -16,7 +16,7 @@ void loginOptionScreen(BuildContext context) {
       ),
     ),
     builder: (BuildContext context) {
-      return Container(
+      return SizedBox(
         height: MediaQuery.of(context).size.height * 0.9,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -42,6 +42,7 @@ void loginOptionScreen(BuildContext context) {
                     onPressed: () {
                       numberPhoneLoginScreen(context);
                     },
+                    style: customElevatedButtonStyle,
                     child: const Text(
                       'Tiếp tục bằng số điện thoại',
                       style: TextStyle(
@@ -50,7 +51,6 @@ void loginOptionScreen(BuildContext context) {
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
-                    style: customElevatedButtonStyle,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -60,6 +60,7 @@ void loginOptionScreen(BuildContext context) {
                     onPressed: () {
                       emailLoginScreen(context);
                     },
+                    style: customEmailButtonStyle,
                     child: const Text(
                       'Tiếp tục bằng email',
                       style: TextStyle(
@@ -68,7 +69,6 @@ void loginOptionScreen(BuildContext context) {
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
-                    style: customEmailButtonStyle,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -76,6 +76,7 @@ void loginOptionScreen(BuildContext context) {
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: ElevatedButton(
                     onPressed: () {},
+                    style: customGoogleButtonStyle,
                     child: const Text(
                       'Tiếp tục bằng Google',
                       style: TextStyle(
@@ -84,7 +85,6 @@ void loginOptionScreen(BuildContext context) {
                         color: Colors.black54,
                       ),
                     ),
-                    style: customGoogleButtonStyle,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -92,6 +92,7 @@ void loginOptionScreen(BuildContext context) {
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: ElevatedButton(
                     onPressed: () {},
+                    style: customFacebookButtonStyle,
                     child: const Text(
                       'Tiếp tục bằng Facebook',
                       style: TextStyle(
@@ -100,7 +101,6 @@ void loginOptionScreen(BuildContext context) {
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
-                    style: customFacebookButtonStyle,
                   ),
                 ),
                 const SizedBox(height: 15),

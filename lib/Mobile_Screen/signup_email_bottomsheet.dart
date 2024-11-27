@@ -13,7 +13,7 @@ void emailSignUpScreen(BuildContext context) {
       ),
     ),
     builder: (BuildContext context) {
-      return Container(
+      return SizedBox(
         height: MediaQuery.of(context).size.height * 0.9,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -21,7 +21,7 @@ void emailSignUpScreen(BuildContext context) {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 'Đăng ký bằng email',
                 style: TextStyle(
                   fontSize: 25,
