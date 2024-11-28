@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/reuseable_items.dart';
-import 'package:my_project/Services/authService.dart';
 
 void emailSignUpScreen(BuildContext context) {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
-
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -82,13 +75,7 @@ void emailSignUpScreen(BuildContext context) {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: ElevatedButton(
-                  onPressed: () => AuthService.signUpWithEmail(
-                    context: context,
-                    name: nameController.text,
-                    email: emailController.text,
-                    password: passwordController.text,
-                    confirmPassword: confirmPasswordController.text,
-                  ),
+                  onPressed: () {},
                   style: customElevatedButtonStyle,
                   child: const Text(
                     'Đăng ký',
@@ -103,6 +90,26 @@ void emailSignUpScreen(BuildContext context) {
             ],
           ),
         ),
+      );
+    },
+  );
+}
+
+void _showDialog(BuildContext context, String message) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Thông báo'),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Đóng'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       );
     },
   );
