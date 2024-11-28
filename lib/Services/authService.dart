@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -79,6 +81,161 @@ class AuthService {
       onSuccess(userCredential.user);
     } catch (e) {
       onError('Xác minh OTP thất bại: ${e.toString()}');
+    }
+  }
+
+  static Future<void> signUpWithEmail({
+    required BuildContext context,
+    required String name,
+    required String email,
+    required String password,
+    required String confirmPassword,
+  }) async {
+    if (name.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty) {
+      print("Thông tin chưa đầy đủ!");
+      _showDialog(context, 'Vui lòng điền đầy đủ thông tin!');
+      return;
+    }
+
+    if (!_isValidEmail(email)) {
+      print("Email không hợp lệ!");
+      _showDialog(
+          context, 'Email không hợp lệ! Vui lòng nhập email đúng định dạng.');
+      return;
+    }
+
+    if (password != confirmPassword) {
+      print("Mật khẩu không khớp!");
+      _showDialog(context, 'Mật khẩu và xác nhận mật khẩu không khớp!');
+      return;
+    }
+
+    try {
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      if (userCredential.user != null && !userCredential.user!.emailVerified) {
+        await userCredential.user!.sendEmailVerification();
+        print("Đã gửi email xác thực");
+
+        _showDialog(context,
+            'Email xác thực đã được gửi. Vui lòng kiểm tra hộp thư của bạn!');
+      } else {
+        _showDialog(context, 'Tài khoản đã được tạo thành công!');
+      }
+
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      print("Lỗi đăng ký: ${e.message}");
+      String errorMessage = 'Đăng ký thất bại. Vui lòng thử lại!';
+      if (e.code == 'email-already-in-use') {
+        errorMessage = 'Email này đã được sử dụng!';
+      } else if (e.code == 'invalid-email') {
+        errorMessage = 'Email không hợp lệ!';
+      }
+      _showDialog(context, errorMessage);
+    } catch (e) {
+      print("Đã xảy ra lỗi không xác định: $e");
+      _showDialog(context, 'Đã xảy ra lỗi không xác định!');
+    }
+  }
+
+  static bool _isValidEmail(String email) {
+    final regex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return regex.hasMatch(email);
+  }
+
+  static void _showDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          elevation: 16,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 40,
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: const Text(
+                      'OK',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // log in with email
+  Future<void> logInWithEmail({
+    required BuildContext context,
+    required String email,
+    required String password,
+    required Function(User?) onSuccess,
+    required Function(String) onError,
+  }) async {
+    if (email.isEmpty || password.isEmpty) {
+      onError('Email và mật khẩu không được để trống!');
+      return;
+    }
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      if (!userCredential.user!.emailVerified) {
+        onError(
+            'Email chưa được xác thực! Vui lòng xác thực email trước khi đăng nhập.');
+        return;
+      }
+      onSuccess(userCredential.user);
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = 'Đăng nhập thất bại. Vui lòng thử lại!';
+      if (e.code == "user-not-found") {
+        errorMessage = 'Không tìm thấy tài khoản nào với email này!';
+      } else if (e.code == 'wrong-password') {
+        errorMessage = 'Mật khẩu không chính xác!';
+      }
+      onError(errorMessage);
+    } catch (e) {
+      onError('Đã xảy ra lỗi: ${e.toString()}');
     }
   }
 }

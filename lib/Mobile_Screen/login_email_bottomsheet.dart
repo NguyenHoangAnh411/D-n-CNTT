@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Mobile_Screen/home_screen.dart';
+import 'package:my_project/Services/authService.dart';
 import 'package:my_project/reuseable_items.dart';
 
 void emailLoginScreen(BuildContext context) {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -33,6 +38,7 @@ void emailLoginScreen(BuildContext context) {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: TextField(
+                  controller: emailController,
                   cursorColor: Color(0xFF1c49ff),
                   decoration: customTextFieldDecoration.copyWith(
                     hintText: 'Email',
@@ -43,18 +49,37 @@ void emailLoginScreen(BuildContext context) {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: TextField(
+                  controller: passwordController,
                   cursorColor: Color(0xFF1c49ff),
                   decoration: customTextFieldDecoration.copyWith(
                     hintText: 'Mật khẩu',
                   ),
-                  obscureText: true, // Ẩn mật khẩu khi nhập
+                  obscureText: true,
                 ),
               ),
               const SizedBox(height: 10),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    String email = emailController.text.trim();
+                    String password = passwordController.text.trim();
+
+                    AuthService().logInWithEmail(
+                      context: context,
+                      email: email,
+                      password: password,
+                      onSuccess: (user) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      },
+                      onError: (error) {
+                        _showDialog(context, error);
+                      },
+                    );
+                  },
                   style: customElevatedButtonStyle,
                   child: const Text(
                     'Đăng nhập',
@@ -76,6 +101,63 @@ void emailLoginScreen(BuildContext context) {
                       color: Colors.black54),
                 ),
               )
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void _showDialog(BuildContext context, String message) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        elevation: 16,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const Icon(
+                Icons.error_outline,
+                color: Colors.red,
+                size: 40,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                message,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    backgroundColor: Color(0xFF1c49ff),
+                  ),
+                  child: const Text(
+                    'OK',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
