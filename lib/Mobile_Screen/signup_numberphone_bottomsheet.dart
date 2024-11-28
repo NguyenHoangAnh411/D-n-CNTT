@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/reuseable_items.dart';
+import 'package:my_project/Services/authService.dart';
 
 void numberphoneSignUpScreen(BuildContext context) {
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController otpController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+
+  AuthService authService = AuthService();
+  String? verificationId;
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -17,7 +26,7 @@ void numberphoneSignUpScreen(BuildContext context) {
         height: MediaQuery.of(context).size.height * 0.9,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: const EdgeInsets.all(14.0),
+          padding: const EdgeInsets.all(16.0),
           child: Container(
             child: Column(
               children: <Widget>[
@@ -63,7 +72,7 @@ void numberphoneSignUpScreen(BuildContext context) {
                     child: const Text(
                       'Đăng ký',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFFFFFFF)),
                     ),
