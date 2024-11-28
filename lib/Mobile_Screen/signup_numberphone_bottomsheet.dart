@@ -17,8 +17,8 @@ void numberphoneSignUpScreen(BuildContext context) {
     backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(20),
-        topRight: Radius.circular(20),
+        topLeft: Radius.circular(10),
+        topRight: Radius.circular(10),
       ),
     ),
     builder: (BuildContext context) {
@@ -30,49 +30,61 @@ void numberphoneSignUpScreen(BuildContext context) {
           child: Container(
             child: Column(
               children: <Widget>[
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Text(
                   'Đăng ký bằng số điện thoại',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(height: 30),
-                TextField(
-                  decoration: customTextFieldDecoration.copyWith(
-                    hintText: 'Nhập số điện thoại',
-                  ),
-                ),
                 const SizedBox(height: 20),
-                TextField(
-                  decoration: customTextFieldDecoration.copyWith(
-                    hintText: 'Nhập mật khẩu',
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  decoration: customTextFieldDecoration.copyWith(
-                    hintText: 'Nhập mã OTP',
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  decoration: customTextFieldDecoration.copyWith(
-                    hintText: 'Nhập tên người dùng',
-                  ),
-                ),
-                const SizedBox(height: 30),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  child: TextField(
+                    decoration: customTextFieldDecoration.copyWith(
+                      hintText: 'Nhập số điện thoại',
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  child: TextField(
+                    decoration: customTextFieldDecoration.copyWith(
+                      hintText: 'Nhập mật khẩu',
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  child: TextField(
+                    decoration: customTextFieldDecoration.copyWith(
+                      hintText: 'Nhập mã OTP',
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  child: TextField(
+                    decoration: customTextFieldDecoration.copyWith(
+                      hintText: 'Nhập tên người dùng',
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.75,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: customElevatedButtonStyle,
                     child: const Text(
                       'Đăng ký',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFFFFFFF)),
                     ),

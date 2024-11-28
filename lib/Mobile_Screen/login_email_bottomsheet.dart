@@ -24,27 +24,35 @@ void emailLoginScreen(BuildContext context) {
               const Text(
                 'Đăng nhập bằng email',
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
               const SizedBox(height: 30),
-              TextField(
-                decoration: customTextFieldDecoration.copyWith(
-                  hintText: 'Email',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: customTextFieldDecoration.copyWith(
-                  hintText: 'Mật khẩu',
-                ),
-                obscureText: true, // Ẩn mật khẩu khi nhập
-              ),
-              const SizedBox(height: 30),
               SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width * 0.75,
+                child: TextField(
+                  cursorColor: Color(0xFF1c49ff),
+                  decoration: customTextFieldDecoration.copyWith(
+                    hintText: 'Email',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.75,
+                child: TextField(
+                  cursorColor: Color(0xFF1c49ff),
+                  decoration: customTextFieldDecoration.copyWith(
+                    hintText: 'Mật khẩu',
+                  ),
+                  obscureText: true, // Ẩn mật khẩu khi nhập
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.75,
                 child: ElevatedButton(
                   onPressed: () {},
                   style: customElevatedButtonStyle,
@@ -57,7 +65,7 @@ void emailLoginScreen(BuildContext context) {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               TextButton(
                 onPressed: () {},
                 child: const Text(
@@ -65,7 +73,7 @@ void emailLoginScreen(BuildContext context) {
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFFd9d9d9)),
+                      color: Colors.black54),
                 ),
               )
             ],

@@ -9,7 +9,7 @@ class MobileOnboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF), // Đặt màu nền là trắng
+      backgroundColor: const Color(0xFFFFFFFF), 
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
