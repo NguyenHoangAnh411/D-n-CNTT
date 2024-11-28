@@ -8,10 +8,10 @@ final ButtonStyle customElevatedButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.bold,
   ),
-  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
 );
 final ButtonStyle customEmailButtonStyle = ElevatedButton.styleFrom(
   backgroundColor: const Color(0xFFd0011c),
@@ -21,7 +21,7 @@ final ButtonStyle customEmailButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.bold,
   ),
   padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
@@ -35,7 +35,7 @@ final ButtonStyle customGoogleButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.bold,
   ),
   padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
@@ -49,7 +49,7 @@ final ButtonStyle customFacebookButtonStyle = ElevatedButton.styleFrom(
   ),
   textStyle: const TextStyle(
     color: Color(0xFFFFFFFF),
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.bold,
   ),
   padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
@@ -60,7 +60,7 @@ final InputDecoration customTextFieldDecoration = InputDecoration(
   fillColor: const Color(0xFFD9D9D9),
   hintStyle: const TextStyle(
     color: Colors.grey,
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.bold,
   ),
   border: OutlineInputBorder(
