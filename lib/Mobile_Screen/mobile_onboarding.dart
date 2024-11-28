@@ -14,9 +14,7 @@ class MobileOnboarding extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Container(
-            width: 350,
-            height: 60,
-            margin: const EdgeInsets.only(bottom: 20),
+            width: MediaQuery.of(context).size.width * 0.75,
             child: ElevatedButton(
               onPressed: () {
                 signUpOptionScreen(context);
@@ -25,7 +23,7 @@ class MobileOnboarding extends StatelessWidget {
               child: const Text(
                 'Đăng ký',
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFFFFFFF)),
               ),
@@ -37,7 +35,7 @@ class MobileOnboarding extends StatelessWidget {
               const Text(
                 'Bạn đã có tài khoản?',
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFd9d9d9)),
               ),
@@ -49,7 +47,7 @@ class MobileOnboarding extends StatelessWidget {
                 child: const Text(
                   'Đăng nhập',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF1c49ff)),
                 ),

@@ -20,7 +20,7 @@ void loginOptionScreen(BuildContext context) {
         height: MediaQuery.of(context).size.height * 0.9,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(14.0),
           child: Container(
             child: Column(
               children: <Widget>[
@@ -28,16 +28,16 @@ void loginOptionScreen(BuildContext context) {
                 const Text(
                   'Đăng nhập để tiếp tục',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
 
                 // Tiếp tục bằng số điện thoại
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.75,
                   child: ElevatedButton(
                     onPressed: () {
                       numberPhoneLoginScreen(context);
@@ -46,16 +46,16 @@ void loginOptionScreen(BuildContext context) {
                     child: const Text(
                       'Tiếp tục bằng số điện thoại',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.75,
                   child: ElevatedButton(
                     onPressed: () {
                       emailLoginScreen(context);
@@ -64,57 +64,56 @@ void loginOptionScreen(BuildContext context) {
                     child: const Text(
                       'Tiếp tục bằng email',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.75,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: customGoogleButtonStyle,
                     child: const Text(
                       'Tiếp tục bằng Google',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.black54,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.75,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: customFacebookButtonStyle,
                     child: const Text(
                       'Tiếp tục bằng Facebook',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFFFFFFFF),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       'Bạn chưa tài khoản?',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFd9d9d9)),
+                          color: Colors.black54),
                     ),
-                    const SizedBox(width: 0),
                     TextButton(
                       onPressed: () {
                         signUpOptionScreen(context);
@@ -122,7 +121,7 @@ void loginOptionScreen(BuildContext context) {
                       child: const Text(
                         'Đăng ký',
                         style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF1c49ff)),
                       ),

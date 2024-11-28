@@ -17,7 +17,7 @@ void numberphoneSignUpScreen(BuildContext context) {
         height: MediaQuery.of(context).size.height * 0.9,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(14.0),
           child: Container(
             child: Column(
               children: <Widget>[
@@ -63,7 +63,7 @@ void numberphoneSignUpScreen(BuildContext context) {
                     child: const Text(
                       'Đăng ký',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFFFFFFF)),
                     ),
