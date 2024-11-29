@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Mobile_Screen/login_email_bottomsheet.dart';
 import 'package:my_project/reuseable_items.dart';
 import 'package:my_project/Services/authService.dart';
-import 'package:my_project/Mobile_Screen/mobile_onboarding.dart';
 
 void emailSignUpScreen(BuildContext context) {
   final TextEditingController nameController = TextEditingController();
@@ -178,7 +177,7 @@ void _showDialog(BuildContext context, String message) {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 12),
-                    backgroundColor: Color(0xFF1c49ff),
+                    backgroundColor: const Color(0xFF1c49ff),
                   ),
                   child: const Text(
                     'OK',

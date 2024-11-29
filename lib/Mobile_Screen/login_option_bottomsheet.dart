@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Mobile_Screen/home_screen.dart';
 import 'package:my_project/Mobile_Screen/login_email_bottomsheet.dart';
 import 'package:my_project/Mobile_Screen/login_numberphone_bottomsheet.dart';
 import 'package:my_project/Mobile_Screen/signup_option_bottomsheet.dart';
 import 'package:my_project/reuseable_items.dart';
-
-void loginOptionScreen(BuildContext context) {
+import 'package:my_project/Services/authService.dart' as service_auth;
+void loginOptionScreen(BuildContext context, service_auth.AuthService authService) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -75,16 +76,30 @@ void loginOptionScreen(BuildContext context) {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.75,
                   child: ElevatedButton(
-                    onPressed: () {},
-                    style: customGoogleButtonStyle,
-                    child: const Text(
-                      'Tiếp tục bằng Google',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black54,
-                      ),
+                    onPressed: () async {
+                    try {
+                      await authService.loginWithGoogle();
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      );
+                    } catch (e) {
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Lỗi khi đăng nhập bằng Google: $e')),
+                      );
+                    }
+                  },
+                  style: customGoogleButtonStyle,
+                  child: const Text(
+                    'Tiếp tục bằng Google',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54,
                     ),
+                  ),
                   ),
                 ),
                 const SizedBox(height: 10),

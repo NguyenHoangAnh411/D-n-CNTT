@@ -1,10 +1,28 @@
-import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  
+  Future<UserCredential?> loginWithGoogle() async {
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+
+      final googleAuth = await googleUser?.authentication;
+
+      final cred = GoogleAuthProvider.credential(idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
+
+      return await _auth.signInWithCredential(cred);
+    } catch (e) {
+      if (kDebugMode) {
+        print('Google Login Error: ${e.toString()}');
+      }
+    }
+    return null;
+  }
 
   Future<void> signUpWithPhone({
     required String phoneNumber,
@@ -205,7 +223,6 @@ class AuthService {
     );
   }
 
-  // log in with email
   Future<void> logInWithEmail({
     required BuildContext context,
     required String email,
@@ -238,4 +255,5 @@ class AuthService {
       onError('Đã xảy ra lỗi: ${e.toString()}');
     }
   }
+
 }

@@ -39,7 +39,7 @@ void emailLoginScreen(BuildContext context) {
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: TextField(
                   controller: emailController,
-                  cursorColor: Color(0xFF1c49ff),
+                  cursorColor: const Color(0xFF1c49ff),
                   decoration: customTextFieldDecoration.copyWith(
                     hintText: 'Email',
                   ),
@@ -50,7 +50,7 @@ void emailLoginScreen(BuildContext context) {
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: TextField(
                   controller: passwordController,
-                  cursorColor: Color(0xFF1c49ff),
+                  cursorColor: const Color(0xFF1c49ff),
                   decoration: customTextFieldDecoration.copyWith(
                     hintText: 'Mật khẩu',
                   ),
@@ -72,7 +72,7 @@ void emailLoginScreen(BuildContext context) {
                       onSuccess: (user) {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                          MaterialPageRoute(builder: (context) => const HomeScreen()),
                         );
                       },
                       onError: (error) {
@@ -147,7 +147,7 @@ void _showDialog(BuildContext context, String message) {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 12),
-                    backgroundColor: Color(0xFF1c49ff),
+                    backgroundColor: const Color(0xFF1c49ff),
                   ),
                   child: const Text(
                     'OK',

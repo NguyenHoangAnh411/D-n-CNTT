@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Mobile_Screen/login_option_bottomsheet.dart';
 import 'package:my_project/Mobile_Screen/signup_option_bottomsheet.dart';
 import 'package:my_project/reuseable_items.dart';
+import 'package:my_project/Services/authService.dart' as service_auth;
 
 class MobileOnboarding extends StatelessWidget {
+  
   const MobileOnboarding({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final service_auth.AuthService authService = service_auth.AuthService();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF), 
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.75,
             child: ElevatedButton(
               onPressed: () {
@@ -42,7 +45,7 @@ class MobileOnboarding extends StatelessWidget {
               const SizedBox(width: 0),
               TextButton(
                 onPressed: () {
-                  loginOptionScreen(context);
+                  loginOptionScreen(context, authService);
                 },
                 child: const Text(
                   'Đăng nhập',

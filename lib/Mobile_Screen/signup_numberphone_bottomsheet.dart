@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/reuseable_items.dart';
-import 'package:my_project/Services/authService.dart';
 
 void numberphoneSignUpScreen(BuildContext context) {
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController otpController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
 
-  AuthService authService = AuthService();
-  String? verificationId;
 
   showModalBottomSheet(
     context: context,
