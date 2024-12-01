@@ -31,8 +31,38 @@
 
   <title>my_project</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Google Sign-In Script -->
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <meta name="google-signin-client_id" content="79853946102-n5nqnocs7hnanil1j2lc36ujvjdc601s.apps.googleusercontent.com"> <!-- Thêm dòng này -->
+  
+  <script>
+    var googleUser = {};
+    var startApp = function() {
+      gapi.load('auth2', function(){
+        auth2 = gapi.auth2.init({
+          client_id: '79853946102-n5nqnocs7hnanil1j2lc36ujvjdc601s.apps.googleusercontent.com',  // Thay Client ID 
+          cookiepolicy: 'single_host_origin',
+        });
+        attachSignin(document.getElementById('google-signin-button'));
+      });
+    };
+
+    function attachSignin(element) {
+      auth2.attachClickHandler(element, {},
+          function(googleUser) {
+              var profile = googleUser.getBasicProfile();
+              console.log("Signed in: " + profile.getName());
+          }, function(error) {
+              alert(JSON.stringify(error, undefined, 2));
+          });
+    }
+  </script>
 </head>
 <body>
+  <!-- Google Sign-In Button -->
+  <button id="google-signin-button">Sign in with Google</button>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

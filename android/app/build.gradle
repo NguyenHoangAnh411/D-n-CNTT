@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.my_project"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "25.1.8937393" // Set to the required version here
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -37,9 +37,9 @@ android {
 flutter {
     source = "../.."
 }
+
 dependencies {
     implementation platform('com.google.firebase:firebase-bom:33.6.0')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
-
 }
