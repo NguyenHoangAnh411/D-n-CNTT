@@ -21,9 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
         useMaterial3: true,
         navigationBarTheme: NavigationBarThemeData(
           indicatorColor: Colors.transparent,
-          labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.selected)) {
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.selected)) {
                 return const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
@@ -35,9 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.grey);
             },
           ),
-          iconTheme: MaterialStateProperty.resolveWith<IconThemeData>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.selected)) {
+          iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.selected)) {
                 return const IconThemeData(
                     size: 25,
                     color: Color(0xFF1c49ff)); 
@@ -163,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           /// Profile page (Trang cá nhân)
-          Center(
+          const Center(
             child: Text(
               'Trang Cá Nhân',
             ),
