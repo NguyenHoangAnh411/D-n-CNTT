@@ -1,52 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:my_project/pages/home_page.dart';
+import 'package:my_project/pages/messages_page.dart';
+import 'package:my_project/pages/notifications_page.dart';
+import 'package:my_project/pages/profile_page.dart';
 
 void main() => runApp(const HomeScreen());
 
 class HomeScreen extends StatefulWidget {
+  
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
+  final List<Widget> pages = const [
+    HomePage(),
+    NotificationsPage(),
+    MessagesPage(),
+    ProfilePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        navigationBarTheme: NavigationBarThemeData(
-          indicatorColor: Colors.transparent,
-          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
-            (Set<WidgetState> states) {
-              if (states.contains(WidgetState.selected)) {
-                return const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1c49ff)); 
-              }
-              return const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey);
-            },
-          ),
-          iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
-            (Set<WidgetState> states) {
-              if (states.contains(WidgetState.selected)) {
-                return const IconThemeData(
-                    size: 25,
-                    color: Color(0xFF1c49ff)); 
-              }
-              return const IconThemeData(
-                  size: 25, color: Colors.grey); 
-            },
-          ),
-        ),
       ),
       home: Scaffold(
         bottomNavigationBar: NavigationBar(
@@ -82,93 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        body: <Widget>[
-          /// Home page
-          Card(
-            shadowColor: Colors.transparent,
-            margin: const EdgeInsets.all(8.0),
-            child: SizedBox.expand(
-              child: Center(
-                child: Text(
-                  'Home page',
-                  style: theme.textTheme.titleLarge,
-                ),
-              ),
-            ),
-          ),
-
-          /// Notifications page
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                Card(
-                  child: ListTile(
-                    leading: Icon(EvaIcons.bellOutline),
-                    title: Text('Notification 1'),
-                    subtitle: Text('This is a notification'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(EvaIcons.bellOutline),
-                    title: Text('Notification 2'),
-                    subtitle: Text('This is a notification'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          /// Messages page
-          ListView.builder(
-            reverse: true,
-            itemCount: 2,
-            itemBuilder: (BuildContext context, int index) {
-              if (index == 0) {
-                return Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin: const EdgeInsets.all(8.0),
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primary,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Text(
-                      'Hello',
-                      style: theme.textTheme.bodyLarge!
-                          .copyWith(color: theme.colorScheme.onPrimary),
-                    ),
-                  ),
-                );
-              }
-              return Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: const EdgeInsets.all(8.0),
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.primary,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Text(
-                    'Hi!',
-                    style: theme.textTheme.bodyLarge!
-                        .copyWith(color: theme.colorScheme.onPrimary),
-                  ),
-                ),
-              );
-            },
-          ),
-
-          /// Profile page (Trang cá nhân)
-          const Center(
-            child: Text(
-              'Trang Cá Nhân',
-            ),
-          ),
-        ][currentPageIndex],
+        body: pages[currentPageIndex],
       ),
     );
   }

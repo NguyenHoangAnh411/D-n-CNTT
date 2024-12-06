@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project/reuseable_items.dart';
 import 'package:my_project/Mobile_Screen/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -48,7 +49,7 @@ class AuthService {
     }
   }
 
-  Future<void> signInWithOtp({
+Future<void> signInWithOtp({
   required BuildContext context,
   required String otpCode,
   required String verificationId,
@@ -62,8 +63,14 @@ class AuthService {
     );
 
     UserCredential userCredential = await _auth.signInWithCredential(credential);
-    
+
     if (userCredential.user != null) {
+      // Lưu trạng thái đăng nhập
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', true);
+      prefs.setString('phoneNumber', userCredential.user?.phoneNumber ?? '');
+
+      // Điều hướng đến HomeScreen
       Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
         context,
@@ -76,6 +83,7 @@ class AuthService {
     onError('Mã OTP không hợp lệ: ${e.toString()}');
   }
 }
+
 
 }
 

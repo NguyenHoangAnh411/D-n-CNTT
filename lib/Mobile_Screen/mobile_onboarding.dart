@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/Mobile_Screen/login_option_bottomsheet.dart';
+import 'package:my_project/Mobile_Screen/LoginOptionScreen%20.dart';
 import 'package:my_project/Mobile_Screen/signup_option_bottomsheet.dart';
 import 'package:my_project/reuseable_items.dart';
 import 'package:my_project/Services/authService.dart' as service_auth;
@@ -45,16 +45,23 @@ class MobileOnboarding extends StatelessWidget {
               const SizedBox(width: 0),
               TextButton(
                 onPressed: () {
-                  loginOptionScreen(context, authService);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginOptionScreen(authService: authService),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Đăng nhập',
                   style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1c49ff)),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1c49ff),
+                  ),
                 ),
-              ),
+              )
+
             ],
           ),
           const SizedBox(height: 50),

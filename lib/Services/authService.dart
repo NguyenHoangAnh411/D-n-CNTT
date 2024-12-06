@@ -2,27 +2,37 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<UserCredential?> loginWithGoogle() async {
-    try {
-      final googleUser = await GoogleSignIn().signIn();
+Future<UserCredential?> loginWithGoogle() async {
+  try {
+    final googleUser = await GoogleSignIn().signIn();
 
-      final googleAuth = await googleUser?.authentication;
+    final googleAuth = await googleUser?.authentication;
 
-      final cred = GoogleAuthProvider.credential(
-          idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
+    final cred = GoogleAuthProvider.credential(
+        idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
 
-      return await _auth.signInWithCredential(cred);
-    } catch (e) {
-      if (kDebugMode) {
-        print('Google Login Error: ${e.toString()}');
-      }
+    UserCredential userCredential = await _auth.signInWithCredential(cred);
+
+    if (userCredential.user != null) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', true);
+      prefs.setString('userUID', userCredential.user?.uid ?? '');
+
+      return userCredential;
     }
-    return null;
+  } catch (e) {
+    if (kDebugMode) {
+      print('Google Login Error: ${e.toString()}');
+    }
   }
+  return null;
+}
+
 
   Future<void> signUpWithPhone({
     required String phoneNumber,

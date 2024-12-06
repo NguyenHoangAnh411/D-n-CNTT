@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Mobile_Screen/home_screen.dart';
 import 'package:my_project/Services/authService.dart';
 import 'package:my_project/reuseable_items.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void emailLoginScreen(BuildContext context) {
   final TextEditingController emailController = TextEditingController();
@@ -69,7 +70,10 @@ void emailLoginScreen(BuildContext context) {
                       context: context,
                       email: email,
                       password: password,
-                      onSuccess: (user) {
+                      onSuccess: (user) async {
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        prefs.setBool('isLoggedIn', true);
+                        
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => const HomeScreen()),
