@@ -8,12 +8,12 @@ import 'package:my_project/pages/profile_page.dart';
 void main() => runApp(const HomeScreen());
 
 class HomeScreen extends StatefulWidget {
-  
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
@@ -39,14 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           selectedIndex: currentPageIndex,
-          destinations: const <Widget>[
+          destinations: <Widget>[
             NavigationDestination(
-              selectedIcon: Icon(EvaIcons.home),
+              selectedIcon: Icon(EvaIcons.home, color: Color(0xFF1c49ff)),
               icon: Icon(EvaIcons.homeOutline),
               label: 'Trang chủ',
             ),
             NavigationDestination(
-              selectedIcon: Icon(EvaIcons.people),
+              selectedIcon: Icon(EvaIcons.people, color: Color(0xFF1c49ff)),
               icon: Icon(EvaIcons.peopleOutline),
               label: 'Trò chuyện',
             ),
@@ -55,11 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: Text('2'),
                 child: Icon(EvaIcons.awardOutline),
               ),
-              selectedIcon: Icon(EvaIcons.award),
+              selectedIcon: Icon(EvaIcons.award, color: Color(0xFF1c49ff)),
               label: 'Thử thách',
             ),
             NavigationDestination(
-              selectedIcon: Icon(EvaIcons.person),
+              selectedIcon: Icon(EvaIcons.person, color: Color(0xFF1c49ff)),
               icon: Icon(EvaIcons.personOutline),
               label: 'Trang cá nhân',
             ),

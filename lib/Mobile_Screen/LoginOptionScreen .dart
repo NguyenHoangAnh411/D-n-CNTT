@@ -9,7 +9,8 @@ import 'package:my_project/Services/authService.dart' as service_auth;
 class LoginOptionScreen extends StatelessWidget {
   final service_auth.AuthService authService;
 
-  const LoginOptionScreen({Key? key, required this.authService}) : super(key: key);
+  const LoginOptionScreen({Key? key, required this.authService})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +59,22 @@ class LoginOptionScreen extends StatelessWidget {
                   text: 'Tiếp tục bằng số điện thoại',
                   onPressed: () => numberPhoneLoginScreen(context),
                   buttonStyle: customElevatedButtonStyle,
+                  textStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 LoginOptionButton(
                   text: 'Tiếp tục bằng email',
                   onPressed: () => emailLoginScreen(context),
                   buttonStyle: customEmailButtonStyle,
+                  textStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 LoginOptionButton(
@@ -72,12 +83,22 @@ class LoginOptionScreen extends StatelessWidget {
                     await _loginWithGoogle(context);
                   },
                   buttonStyle: customGoogleButtonStyle,
+                  textStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 LoginOptionButton(
                   text: 'Tiếp tục bằng Facebook',
                   onPressed: () {},
                   buttonStyle: customFacebookButtonStyle,
+                  textStyle: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -133,12 +154,14 @@ class LoginOptionButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final ButtonStyle buttonStyle;
+  final TextStyle textStyle; // Added textStyle parameter
 
   const LoginOptionButton({
     Key? key,
     required this.text,
     required this.onPressed,
     required this.buttonStyle,
+    required this.textStyle, // Added textStyle parameter
   }) : super(key: key);
 
   @override
@@ -150,11 +173,7 @@ class LoginOptionButton extends StatelessWidget {
         style: buttonStyle,
         child: Text(
           text,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFFFFFFF),
-          ),
+          style: textStyle, // Use the provided textStyle
         ),
       ),
     );
